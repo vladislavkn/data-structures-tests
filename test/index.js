@@ -3,15 +3,16 @@ const problemTests = require("./problemTests.json");
 const chalk = require("chalk");
 
 const test = (problemId, solutionFn) => {
-  console.log(chalk.bold(`Testing problem ${problemId}`));
-  const tests = problemTests[problemId];
+  const problem = problemTests[String(problemId)];
 
-  if (tests === undefined) {
-    console.log(chalk.yellow("\t⚠️ Problem was not found."));
+  if (problem === undefined) {
+    console.log(chalk.yellow.bold(`⚠️ Problem #${problemId} was not found.`));
     return;
   }
 
-  for (const test of tests) {
+  console.log(chalk.bold(`Problem #${problemId} ${problem.title}`));
+
+  for (const test of problem.tests) {
     const { input, output } = test;
     const actualOutputs = solutionFn(...input);
 
