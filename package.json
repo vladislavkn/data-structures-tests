@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "start": "node start.js",
+    "start:watch": "nodemon --quiet start.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "is-equal": "^1.7.0",
+    "nodemon": "^3.0.3"
+  }
+}
