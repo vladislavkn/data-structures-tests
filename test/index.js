@@ -1,6 +1,7 @@
 const isEqual = require("is-equal");
 const problemTests = require("./problemTests.json");
 const chalk = require("chalk");
+const { copy } = require("copy-anything");
 
 const test = (problemId, solutionFn) => {
   const problem = problemTests[String(problemId)];
@@ -14,7 +15,8 @@ const test = (problemId, solutionFn) => {
 
   for (const test of problem.tests) {
     const { input, output } = test;
-    const actualOutputs = solutionFn(...input);
+    const inputCopy = copy(input);
+    const actualOutputs = solutionFn(...inputCopy);
 
     if (!isEqual(actualOutputs, ...output)) {
       console.log(chalk.red("\t❌ Failed!"));
