@@ -15,7 +15,7 @@ const test = (problemId, solutionFn) => {
     const { input, output } = test;
     const actualOutputs = solutionFn(...input);
 
-    if (!isEqual(actualOutputs, output)) {
+    if (!isEqual(actualOutputs, ...output)) {
       console.log(chalk.red("\t❌ Failed!"));
       console.log(chalk.grey("\tInputs: "), ...input);
       console.log(chalk.grey("\tExpected outputs: "), ...output);
