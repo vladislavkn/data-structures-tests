@@ -10,7 +10,7 @@ const test = (problemId, solutionFn) => {
     return;
   }
 
-  console.log(chalk.bold(`Problem #${problemId} ${problem.title}`));
+  console.log(chalk.bold(`Problem #${problemId} "${problem.title}"`));
 
   for (const test of problem.tests) {
     const { input, output } = test;
