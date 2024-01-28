@@ -13,13 +13,15 @@ const test = (problemId, solutionFn) => {
 
   console.log(chalk.bold(`Problem #${problemId} "${problem.title}"`));
 
-  for (const test of problem.tests) {
-    const { input, output } = test;
+  for (let i = 0; i < problem.tests.length; i++) {
+    const { input, output } = problem.tests[i];
     const inputCopy = copy(input);
     const actualOutputs = solutionFn(...inputCopy);
 
     if (!isEqual(actualOutputs, ...output)) {
-      console.log(chalk.red("\t❌ Failed!"));
+      console.log(
+        chalk.red(`\t❌ Failed! [Test ${i + 1}/${problem.tests.length}]`)
+      );
       console.log(chalk.grey("\tInputs: "), ...input);
       console.log(chalk.grey("\tExpected outputs: "), ...output);
       console.log(chalk.grey("\tActual outputs: "), actualOutputs);
